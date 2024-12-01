@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div className="header-section">
-      <p className="logo">logo</p>
+      <p className="logo">SN</p>
       <ul className="links">
         <li className="active">Home</li>
         <li>About</li>

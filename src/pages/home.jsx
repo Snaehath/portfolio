@@ -1,4 +1,4 @@
-import homeImg from "/src/assets/ home.jpg";
+import homeImg from "/src/assets/img2.jpg";
 const Home = () => {
   return (
     <div className="home-page">
@@ -13,10 +13,8 @@ const Home = () => {
           I'm a <span></span>
         </h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-          distinctio laboriosam aliquam similique cupiditate consequatur
-          corporis nesciunt id ab? Illum explicabo quaerat aliquid cumque
-          exercitationem deleniti hic dignissimos reiciendis nam!
+          Code is where creativity meets logic—a single line can build worlds or
+          solve problems. Keep learning, keep building.
         </p>
         <div className="social-icons">
           <a href="#">
