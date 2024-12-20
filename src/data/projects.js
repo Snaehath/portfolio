@@ -1,0 +1,51 @@
+export const Projects = [
+  {
+    image: "/src/assets/proj1.png",
+    title: "Tic-Tac-Toe",
+    description: "Responsive tic-tac-toe game using javascript class method.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/Tic-Tac-Toe/",
+  },
+  {
+    image: "/src/assets/proj2.png",
+    title: "Ping-Pong",
+    description: "Responsive Ping-Pong game using javascript and canvas.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/ping-pong/",
+  },
+  {
+    image: "/src/assets/proj3.png",
+    title: "Random-Quote-Generator",
+    description: "Responsive Quote Generator using javascript.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/Quote-Gen/",
+  },
+  {
+    image: "/src/assets/proj4.png",
+    title: "Hunt the Ghost",
+    description: "Responsive Quote Generator using javascript.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/Hunt-The-Ghost-/",
+  },
+  {
+    image: "/src/assets/proj5.png",
+    title: "Calculator",
+    description: "Responsive Quote Generator using javascript.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/Calculator/",
+  },
+  {
+    image: "/src/assets/proj6.png",
+    title: "Todo list",
+    description: "Responsive Quote Generator using javascript.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://snaehath.github.io/Todo-list/",
+  },
+  {
+    image: "/src/assets/proj7.png",
+    title: "Yelp camp",
+    description: "Responsive Quote Generator using javascript.",
+    tech_stack: "HTML,CSS,JS",
+    link: "https://yelpcamp-5wwz.onrender.com/",
+  },
+];

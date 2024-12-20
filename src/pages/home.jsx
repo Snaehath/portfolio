@@ -1,4 +1,4 @@
-import homeImg from "/src/assets/img2.jpg";
+import homeImg from "/src/assets/bg-removed.png";
 const Home = () => {
   return (
     <div className="home-page">
