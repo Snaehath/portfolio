@@ -56,22 +56,27 @@ li {
   transition: 0.3s ease;
   border-bottom: 3px solid transparent;
 }
+a {
+  color: white;
+}
 
 li:hover,
-li.active {
+a:hover,
+a.active {
   color: red;
   border-bottom: 3px solid red;
   cursor: pointer;
 }
 
 .home-page {
-  min-height: 100vh;
-  padding: 9rem 15% 5rem;
+  padding: 9rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8rem;
   background-color: black;
+  border-radius: 8px;
+  box-shadow: 1px 1px 30px rgba(87, 87, 87, 0.1);
 }
 .home-page .home-content h1 {
   font-size: 6rem;
@@ -116,7 +121,7 @@ span {
   border-radius: 50%;
   margin: 3rem 1.5rem 3rem 0;
   transition: 0.3s ease;
-  color: #b74b4b;
+  color: rgb(183, 75, 75);
 }
 
 .social-icons a:hover {
@@ -235,4 +240,44 @@ span {
 }
 .like-icon.liked {
   color: #c0392b;
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.text-box {
+  max-width: 90%;
+  text-align: justify;
+  background-color: #000000;
+  color: #eee;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 30px rgba(87, 87, 87, 0.1);
+  font-family: "Arial", sans-serif;
+  font-size: 40px;
+  line-height: 2;
+  transition: color 3s ease;
+}
+
+.highlight {
+  color: rgb(255, 0, 0);
+  opacity: 0;
+  font-style: italic;
+  font-weight: bold;
+  text-transform: capitalize;
+  animation: blink 3s infinite;
+}
+
+.highlight:hover {
+  opacity: 0;
+}
+
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
 }

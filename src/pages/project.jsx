@@ -10,7 +10,7 @@ const Project = () => {
   };
 
   return (
-    <div className="project-cards">
+    <div className="project-cards" id="projects">
       {Projects.map((proj, index) => (
         <div className="card" key={index}>
           <img src={proj.image} alt="project-image" className="card-image" />

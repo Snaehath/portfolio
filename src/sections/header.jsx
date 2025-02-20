@@ -1,16 +1,27 @@
-import Logo from "../assets/logo-s.png";
-
+import s from "/icons/sletter.png";
+import n from "/icons/nletter.png";
 const Header = () => {
   return (
-    <div className="header-section">
-      <p className="logo">
-        <img src={Logo} alt="s letter" style={{ width: "2.5rem" }} />N
+    <div className="fixed top-0 left-0 mt-0 w-full py-4 px-[9%] bg-transparent flex justify-between items-center ">
+      <p className="flex cursor-pointer transition delay-500 ease-in hover:transform-flat scale-100">
+        <img src={s} alt="s letter" className="w-10" />
+        <img src={n} alt="n letter" className="w-10" />
       </p>
-      <ul className="links">
-        <li className="active">Home</li>
-        <li>About</li>
-        <li>Projects</li>
-        <li>Contact</li>
+      <ul className="flex text-2xl ml-16 font-medium  gap-3">
+        <li className="hover:text-red-700 hover:underline">
+          <a href="#home" className="active">
+            Home
+          </a>
+        </li>
+        <li className="hover:text-red-700 hover:underline">
+          <a href="#about">About</a>
+        </li>
+        <li className="hover:text-red-700 hover:underline">
+          <a href="#projects">Projects</a>
+        </li>
+        <li className="hover:text-red-700 hover:underline">
+          <a href="#contact">Contact</a>
+        </li>
       </ul>
     </div>
   );
