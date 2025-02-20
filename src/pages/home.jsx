@@ -26,19 +26,19 @@ const Home = () => {
         <div>
           <a
             href="#"
-            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-500 hover:text-white hover:transform-flat hover:scale-125"
+            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-400 transition-transform duration-300 ease-in-out hover:text-white hover:-translate-y-1.5 hover:scale-110"
           >
             <i className="fa-brands fa-linkedin "></i>
           </a>
           <a
             href="#"
-            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-500 hover:text-white hover:transform-flat hover:scale-125"
+            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-400 transition-transform duration-300 ease-in-out hover:text-white hover:-translate-y-1.5 hover:scale-110"
           >
             <i className="fa-brands fa-instagram"></i>
           </a>
           <a
             href="#"
-            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-500 hover:text-white hover:transform-flat hover:scale-125"
+            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border border-red-400 text-4xl rounded-[50%] m-3 text-red-400 transition-transform duration-300 ease-in-out hover:text-white hover:-translate-y-1.5 hover:scale-110"
           >
             <i className="fa-brands fa-x"></i>
           </a>
