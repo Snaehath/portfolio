@@ -7,19 +7,19 @@ const Header = () => {
         <img src={s} alt="s letter" className="w-10" />
         <img src={n} alt="n letter" className="w-10" />
       </p>
-      <ul className="flex text-2xl ml-16 font-medium gap-3">
-        <li className="hover:text-red-700 hover:border-b-2">
+      <ul className="flex">
+        <li className="list-none text-white text-[1.8rem] ml-16 font-medium transition duration-300 ease-in-out border-b-3 border-transparent hover:text-red-500 hover:border-red-500">
           <a href="#home" className="active">
             Home
           </a>
         </li>
-        <li className="hover:text-red-700 hover:border-b-2">
+        <li className="list-none text-white text-[1.8rem] ml-16 font-medium transition duration-300 ease-in-out border-b-3 border-transparent hover:text-red-500 hover:border-red-500">
           <a href="#about">About</a>
         </li>
-        <li className="hover:text-red-700 hover:border-b-2">
+        <li className="list-none text-white text-[1.8rem] ml-16 font-medium transition duration-300 ease-in-out border-b-3 border-transparent hover:text-red-500 hover:border-red-500">
           <a href="#projects">Projects</a>
         </li>
-        <li className="hover:text-red-700 hover:border-b-2">
+        <li className="list-none text-white text-[1.8rem] ml-16 font-medium transition duration-300 ease-in-out border-b-3 border-transparent hover:text-red-500 hover:border-red-500">
           <a href="#contact">Contact</a>
         </li>
       </ul>

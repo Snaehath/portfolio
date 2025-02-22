@@ -2,14 +2,14 @@ import homeImg from "/src/assets/bg-removed.png";
 const Home = () => {
   return (
     <div
-      className="p-36 flex justify-center items-center gap-32 rounded-lg"
+      className="p-36 flex justify-center items-center gap-12 rounded-lg"
       id="home"
     >
       <div>
         <img
           src={homeImg}
           alt="image"
-          className="relative w-96 rounded-[50%]"
+          className="relative w-[20vw] rounded-[50%] cursor-pointer transition duration-300 ease-linear -top-[60px] hover:shadow-[8px_4px_28px_rgba(755,0,0,0.5)]"
         />
       </div>
       <div className="home-content">
@@ -17,7 +17,8 @@ const Home = () => {
           Hi, it's <span className="text-red-600">Snaehath</span>
         </h1>
         <h3 className="typing-text font-bold text-6xl mb-4">
-          I'm a <span className="text-red-500"></span>
+          I'm a
+          <span className="relative before:content-[Software developer]"></span>
         </h3>
         <p>
           Code is where creativity meets logic—a single line can build worlds or
