@@ -17,8 +17,8 @@ const Home = () => {
           Hi, it's <span className="text-red-600">Snaehath</span>
         </h1>
         <h3 className="typing-text font-bold text-6xl mb-4">
-          I'm a
-          <span className="relative before:content-[Software developer]"></span>
+          I'm a{" "}
+          <span className="text-red-600 font-bold">Full Stack Developer</span>
         </h3>
         <p>
           Code is where creativity meets logic—a single line can build worlds or

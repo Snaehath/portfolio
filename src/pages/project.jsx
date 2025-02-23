@@ -10,12 +10,16 @@ const Project = () => {
   };
 
   return (
-    <div className="project-cards" id="projects">
+    <div className="flex justify-start gap-2.5" id="projects">
       {Projects.map((proj, index) => (
         <div className="card" key={index}>
-          <img src={proj.image} alt="project-image" className="card-image" />
-          <div className="card-content">
-            <h2 className="card-title">{proj.title}</h2>
+          <img
+            src={proj.image}
+            alt="project-image"
+            className="w-full object-fill"
+          />
+          <div className="p-6">
+            <h2 className="font-bold text-2xl">{proj.title}</h2>
             <p className="card-description">{proj.description}</p>
             <p className="card-tech-stack">Tech Stack: {proj.tech_stack}</p>
             <div className="card-footer">
