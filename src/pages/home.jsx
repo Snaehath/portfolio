@@ -1,3 +1,4 @@
+import Typewriter from "typewriter-effect";
 import homeImg from "/src/assets/bg-removed.png";
 const Home = () => {
   return (
@@ -16,9 +17,23 @@ const Home = () => {
         <h1 className="text-8xl font-bold">
           Hi, it's <span className="text-red-600">Snaehath</span>
         </h1>
-        <h3 className="typing-text font-bold text-6xl mb-4">
-          I'm a{" "}
-          <span className="text-red-600 font-bold">Full Stack Developer</span>
+        <h3 className="flex typing-text font-bold text-6xl mb-4">
+          I'm a
+          <span className="text-red-600 font-bold ml-3 italic">
+            <Typewriter
+              options={{
+                strings: [
+                  "Software Developer",
+                  "Web Developer",
+                  "Web Designer",
+                  "Gamer",
+                  "ML Engineer",
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </span>
         </h3>
         <p>
           Code is where creativity meets logic—a single line can build worlds or
