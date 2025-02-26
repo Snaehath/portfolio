@@ -6,13 +6,11 @@ const Home = () => {
       className="p-36 flex justify-center items-center gap-12 rounded-lg"
       id="home"
     >
-      <div>
-        <img
-          src={homeImg}
-          alt="image"
-          className="relative w-[20vw] rounded-[50%] cursor-pointer transition duration-300 ease-linear -top-[60px] hover:shadow-[8px_4px_28px_rgba(755,0,0,0.5)]"
-        />
-      </div>
+      <img
+        src={homeImg}
+        alt="image"
+        className=" w-[20vw] rounded-[50%] cursor-pointer transition duration-300 ease-linear -top-[60px] hover:shadow-[8px_4px_28px_rgba(755,0,0,0.5)]"
+      />
       <div>
         <h1 className="text-8xl font-bold">
           Hi, it's <span className="text-red-600">Snaehath</span>

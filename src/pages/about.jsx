@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <div className="flex justify-center items-center min-h-[100vh] " id="about">
-      <div className="max-w-[90%] text-justify p-5 rounded-2xl shadow-[0_1px_10px_grey] text-5xl leading-20">
+      <div className="max-w-[98%] text-justify p-5 shadow-[0_1px_10px_grey] text-5xl leading-20">
         <p>
           In addition to
           <span className="text-red-600 font-bold italic capitalize animate-pulse">
