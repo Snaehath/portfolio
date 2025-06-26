@@ -1,39 +1,59 @@
-import Proj1 from "../assets/proj1.png";
 import { useState } from "react";
 import { Projects } from "../data/projects";
+import { Heart} from "lucide-react";
 
 const Project = () => {
-  const [liked, setLiked] = useState(false);
+  const [likedProjects, setLikedProjects] = useState(new Set());
 
-  const toggleLike = () => {
-    setLiked(!liked);
+  const toggleLike = (index) => {
+    setLikedProjects((prev) => {
+      const updated = new Set(prev);
+      updated.has(index) ? updated.delete(index) : updated.add(index);
+      return updated;
+    });
   };
 
   return (
-    <div className="flex justify-start gap-2.5" id="projects">
+    <div
+      className="p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      id="projects"
+    >
       {Projects.map((proj, index) => (
-        <div className="card" key={index}>
+        <div
+          key={index}
+          className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105"
+        >
           <img
             src={proj.image}
-            alt="project-image"
-            className="w-full object-fill"
+            alt={`Project ${proj.title}`}
+            className="w-full h-52 object-cover"
           />
-          <div className="p-6">
-            <h2 className="font-bold text-2xl">{proj.title}</h2>
-            <p className="card-description">{proj.description}</p>
-            <p className="card-tech-stack">Tech Stack: {proj.tech_stack}</p>
-            <div className="card-footer">
-              <span
-                className={`like-icon ${liked ? "liked" : ""}`}
-                onClick={toggleLike}
+          <div className="p-6 text-gray-800 dark:text-gray-200">
+            <h2 className="font-bold text-2xl mb-2">{proj.title}</h2>
+            <p className="mb-2">{proj.description}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+              <strong>Tech Stack:</strong> {proj.tech_stack}
+            </p>
+            <div className="flex justify-between items-center">
+              <Heart
+                size={28}
+                strokeWidth={2}
+                className={`cursor-pointer transition duration-200 ease-in-out ${
+                  likedProjects.has(index)
+                    ? "fill-red-500 "
+                    : "fill-transparent stroke-white hover:stroke-red-500"
+                }`}
+                onClick={() => toggleLike(index)}
+              />
+
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-red-500 text-white px-4 py-2 rounded-md text-sm hover:bg-red-600"
               >
-                &#x2764;
-              </span>
-              <button>
-                <a href={proj.link} target="_blank" rel="noopener noreferrer">
-                  Visit
-                </a>
-              </button>
+                Visit
+              </a>
             </div>
           </div>
         </div>
