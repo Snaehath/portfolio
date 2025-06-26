@@ -42,8 +42,8 @@ const Home = () => {
         </h3>
 
         <p className="text-base sm:text-lg max-w-xl">
-          Code is where creativity meets logic — a single line can build worlds or
-          solve problems. Keep learning, keep building.
+          Code is where creativity meets logic — a single line can build worlds
+          or solve problems. Keep learning, keep building.
         </p>
 
         {/* Social Links */}
@@ -68,6 +68,16 @@ const Home = () => {
             className="inline-flex justify-center items-center w-16 h-16 bg-transparent border-2 border-red-400 text-3xl sm:text-4xl rounded-full m-2 text-red-400 transition-transform duration-300 ease-in-out hover:text-white hover:-translate-y-1.5 hover:scale-110"
           >
             <i className="fa-solid fa-envelope"></i>
+          </a>
+          {/* GitHub */}
+          <a
+            href="https://github.com/Snaehath"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            className="inline-flex justify-center items-center w-16 h-16 bg-transparent border-2 border-red-400 text-3xl sm:text-4xl rounded-full m-2 text-red-400 transition-transform duration-300 ease-in-out hover:text-white hover:-translate-y-1.5 hover:scale-110"
+          >
+            <i className="fa-brands fa-github"></i>
           </a>
         </div>
       </div>
