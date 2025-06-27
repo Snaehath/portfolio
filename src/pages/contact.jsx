@@ -10,9 +10,9 @@ const Contact = () => {
         <h2 className="text-5xl font-bold text-red-500 mb-6">Get In Touch</h2>
 
         <p className="text-lg text-gray-300 mb-8">
-          You've seen what I build — now let's build something together! Whether
-          you’re hiring, collaborating on a project, or just want to talk tech,
-          I’d love to hear from you.
+          You've seen what I've built — now let's build something together!
+          Whether you’re hiring, collaborating on a project, or just want to
+          talk tech, I’d love to hear from you.
         </p>
 
         <p className="text-md text-gray-400 mb-8">
@@ -51,7 +51,7 @@ const Contact = () => {
 
         {/* 🔍 Hidden Link */}
         <p className="text-gray-500 text-sm mt-15">
-          Some dots just...
+          ...
           <span className="group relative inline-block ml-2">
             <a
               href="/lab"

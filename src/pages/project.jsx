@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Projects } from "../data/projects";
-import { Heart} from "lucide-react";
+import { Heart } from "lucide-react";
 
 const Project = () => {
   const [likedProjects, setLikedProjects] = useState(new Set());
@@ -41,7 +41,7 @@ const Project = () => {
                 className={`cursor-pointer transition duration-200 ease-in-out ${
                   likedProjects.has(index)
                     ? "fill-red-500 "
-                    : "fill-transparent stroke-white hover:stroke-red-500"
+                    : "fill-transparent hover:stroke-red-500"
                 }`}
                 onClick={() => toggleLike(index)}
               />

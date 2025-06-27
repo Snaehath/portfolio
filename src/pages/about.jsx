@@ -10,8 +10,8 @@ const About = () => {
           Full Stack Developer
         </span>{" "}
         with a deep curiosity for building smart, scalable, and impactful
-        digital experiences. Alongside learning the art of web development,
-        I’ve built working knowledge of{" "}
+        digital experiences. Alongside learning the art of web development, I’ve
+        working knowledge of{" "}
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           Machine Learning
         </span>{" "}
@@ -38,7 +38,7 @@ const About = () => {
         <br />
         <br />
         I'm driven by a vision to create tech that not only works—but feels
-        alive. Every line of code I write is a step toward building my own
+        alive. Every line of code I write is a step towards building my own
         version of a{" "}
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           Big Bang
