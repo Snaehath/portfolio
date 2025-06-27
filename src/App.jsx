@@ -20,7 +20,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-black text-white">
+    <div className="w-full h-full bg-black text-white scroll-smooth">
       {showLab ? (
         <Lab />
       ) : (

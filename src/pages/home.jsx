@@ -19,12 +19,12 @@ const Home = () => {
       {/* Intro Content */}
       <div className="text-center lg:text-left">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold">
-          Hi, it's <span className="text-red-600">Snaehath</span>
+          Hi, it's <span className="text-red-600 diagonal-strike">Snaehath</span>
         </h1>
 
         <h3 className="flex justify-center lg:justify-start items-center font-bold text-2xl sm:text-4xl lg:text-6xl mb-4 mt-2">
           I'm a
-          <span className="text-red-600 font-bold ml-3">
+          <span className="text-red-600 font-bold ml-3 ">
             <Typewriter
               options={{
                 strings: [

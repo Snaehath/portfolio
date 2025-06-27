@@ -1,10 +1,10 @@
 const About = () => {
   return (
     <div
-      className="flex justify-center items-center min-h-[100vh] text-justify p-8 text-4xl leading-20"
       id="about"
+      className="flex justify-center items-center min-h-screen px-4 sm:px-6 md:px-12 py-10 text-justify"
     >
-      <p>
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-4xl leading-relaxed max-w-5xl">
         I'm a passionate{" "}
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           Full Stack Developer

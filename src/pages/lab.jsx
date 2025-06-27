@@ -13,7 +13,8 @@ const Lab = () => {
         <p className="text-gray-300 mb-6 text-lg sm:text-xl">
           This isn't just any section. You've found the lab — the place where
           prototypes are brewing, bugs are evolving into features, and new ideas
-          are preparing for launch 🚧.
+          are preparing for launch 🚧. You'll find fake and original data
+          here — but it's up to you to decide what to believe.
         </p>
 
         <p className="text-gray-400 mb-4 italic">
@@ -77,13 +78,13 @@ const Lab = () => {
                   🤖🧠.
                 </p>
               </div>
-          <a
-            href="/#home"
-            aria-label="Return to home"
-            className="inline-block mt-10 px-5 py-2 bg-gray-800 border border-white/10 rounded-md hover:bg-red-600 transition duration-300 text-white font-semibold"
-          >
-            Close Lab
-          </a>
+              <a
+                href="/#home"
+                aria-label="Return to home"
+                className="inline-block mt-10 px-5 py-2 bg-gray-800 border border-white/10 rounded-md hover:bg-red-600 transition duration-300 text-white font-semibold"
+              >
+                Close Lab
+              </a>
             </>
           )}
         </div>
