@@ -10,7 +10,7 @@ const About = () => {
           Full Stack Developer
         </span>{" "}
         with a deep curiosity for building smart, scalable, and impactful
-        digital experiences. Alongside learning the art of web development, I’ve
+        digital experiences. Alongside learning web development, I’ve
         working knowledge of{" "}
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           Machine Learning
@@ -28,13 +28,7 @@ const About = () => {
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           AI-powered applications
         </span>
-        , I love bringing ideas to life that blend creativity with code. My
-        recent work includes projects that use{" "}
-        <span className="text-red-600 font-bold italic capitalize animate-pulse">
-          LLMs, Gemini API
-        </span>{" "}
-        and other modern tools to enhance user experiences and automate
-        intelligent decision-making.
+        , I love bringing ideas to life that blend creativity with code.
         <br />
         <br />
         I'm driven by a vision to create tech that not only works—but feels
