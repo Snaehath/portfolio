@@ -4,7 +4,7 @@ import n from "/icons/nletter.png";
 import { Menu, X } from "lucide-react"; // Lucide icons
 import Lightsaber from "../components/lightsaber";
 
-const Header = ({on,setOn}) => {
+const Header = ({ on, setOn }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,11 +18,10 @@ const Header = ({on,setOn}) => {
       {/* Logo */}
       <a
         href="#home"
-        className="flex cursor-pointer transition-transform duration-500 ease-in-out hover:scale-110"
+        className="flex orbitron text-5xl font-bold cursor-pointer transition-transform duration-500 ease-in-out hover:scale-110"
         aria-label="Homepage"
       >
-        <img src={s} alt="Letter S" className="w-10" />
-        <img src={n} alt="Letter N" className="w-10" />
+        SN
       </a>
 
       {/* Desktop Navigation */}
@@ -31,16 +30,20 @@ const Header = ({on,setOn}) => {
           {navItems.map((item) => (
             <li
               key={item}
-              className="list-none text-white text-[1.8rem] ml-8 font-medium transition duration-300 ease-in-out border-b-2 border-transparent hover:text-red-500 hover:border-red-500"
+              className={`list-none text-[1.8rem] ml-8 font-medium transition duration-300 ease-in-out border-b-2 border-transparent
+                ${
+                  on
+                    ? "hover:text-red-500 hover:border-red-500"
+                    : "hover:text-white hover:border-white"
+                }`}
             >
               <a href={`#${item.toLowerCase()}`}>{item}</a>
             </li>
           ))}
-          
         </ul>
-        <li className="list-none absolute left-5">
-            <Lightsaber on={on} setOn={setOn}/>
-          </li>
+        <li className="list-none absolute right-20">
+          <Lightsaber on={on} setOn={setOn} />
+        </li>
       </nav>
 
       {/* Mobile Menu Button */}

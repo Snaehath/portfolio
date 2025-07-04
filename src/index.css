@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
-*{
+* {
   scroll-behavior: smooth;
+}
+
+.orbitron {
+  font-family: "orbitron";
 }
 
 .glowing-button {
@@ -12,17 +17,26 @@
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px); }
-  25% { transform: translate(-1px, -1px); }
-  50% { transform: translate(1px, -1px); }
-  75% { transform: translate(-1px, 1px); }
-  100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(1px, 1px);
+  }
+  25% {
+    transform: translate(-1px, -1px);
+  }
+  50% {
+    transform: translate(1px, -1px);
+  }
+  75% {
+    transform: translate(-1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 .diagonal-strike {
   position: relative;
   display: inline-block;
-
 }
 
 .diagonal-strike::after {
@@ -32,12 +46,14 @@
   left: 0;
   width: 140%;
   height: 4px;
-  background: linear-gradient(to right, 
-    black 0%, 
-    black 45%, 
-    transparent 50%, 
-    black 55%, 
-    black 100%);
+  background: linear-gradient(
+    to right,
+    black 0%,
+    black 45%,
+    transparent 50%,
+    black 55%,
+    black 100%
+  );
   transform: rotate(-9deg);
   transform-origin: left center;
   pointer-events: none;
