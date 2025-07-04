@@ -1,6 +1,4 @@
 import { useState } from "react";
-import s from "/icons/sletter.png";
-import n from "/icons/nletter.png";
 import { Menu, X } from "lucide-react"; // Lucide icons
 import Lightsaber from "../components/lightsaber";
 
@@ -18,7 +16,7 @@ const Header = ({ on, setOn }) => {
       {/* Logo */}
       <a
         href="#home"
-        className="flex orbitron text-5xl font-bold cursor-pointer transition-transform duration-500 ease-in-out hover:scale-110"
+        className="flex orbitron text-5xl font-bold cursor-pointer transition-colors duration-500 ease-in-out hover:scale-110"
         aria-label="Homepage"
       >
         SN
@@ -30,7 +28,7 @@ const Header = ({ on, setOn }) => {
           {navItems.map((item) => (
             <li
               key={item}
-              className={`list-none text-[1.8rem] ml-8 font-medium transition duration-300 ease-in-out border-b-2 border-transparent
+              className={`list-none text-[1.8rem] ml-8 font-medium transition-colors duration-300 ease-in-out border-b-2 border-transparent
                 ${
                   on
                     ? "hover:text-red-500 hover:border-red-500"

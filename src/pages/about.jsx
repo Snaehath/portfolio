@@ -2,7 +2,7 @@ const About = () => {
   return (
     <div
       id="about"
-      className="flex justify-center items-center min-h-screen px-4 sm:px-6 md:px-12 py-10 text-justify"
+      className="flex justify-center items-center min-h-screen px-4 sm:px-6 md:px-12 text-justify"
     >
       <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-4xl leading-relaxed max-w-5xl">
         I'm a passionate{" "}
@@ -10,8 +10,8 @@ const About = () => {
           Full Stack Developer
         </span>{" "}
         with a deep curiosity for building smart, scalable, and impactful
-        digital experiences. Alongside learning web development, I’ve
-        working knowledge of{" "}
+        digital experiences. Alongside learning web development, I’ve working
+        knowledge of{" "}
         <span className="text-red-600 font-bold italic capitalize animate-pulse">
           Machine Learning
         </span>{" "}

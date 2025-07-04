@@ -32,7 +32,14 @@ const Home = ({ on }) => {
       {/* Intro Content */}
       <div className="text-center lg:text-left">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold">
-          Hi, it's <span className="text-red-600">Snaehath</span>
+          Hi, it's{" "}
+          <span
+            className={`text-red-600 ${
+              on ? "diagonal-strike black" : "diagonal-strike white"
+            } `}
+          >
+            Snaehath
+          </span>
         </h1>
 
         <h3 className="flex justify-center lg:justify-start items-center font-bold text-2xl sm:text-4xl lg:text-6xl mb-4 mt-2">

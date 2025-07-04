@@ -11,13 +11,13 @@ const Contact = () => {
           Get In Touch
         </h2>
 
-        <p className="text-lg text-gray-300 mb-8">
+        <p className="text-lg mb-8">
           You've seen what I've built — now let's build something together!
           Whether you’re hiring, collaborating on a project, or just want to
           talk tech, I’d love to hear from you.
         </p>
 
-        <p className="text-md text-gray-400 mb-8">
+        <p className="text-md mb-8">
           Drop me a message at{" "}
           <a
             href="mailto:snaehath972002@gmail.com"
