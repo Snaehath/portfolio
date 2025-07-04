@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*{
+  scroll-behavior: smooth;
+}
+
 .glowing-button {
   box-shadow: 0 0 10px #ff1a1a, 0 0 20px #ff1a1a, 0 0 30px #ff1a1a;
 }
@@ -37,4 +41,20 @@
   transform: rotate(-9deg);
   transform-origin: left center;
   pointer-events: none;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-swing {
+  animation: swing 2s ease-in-out infinite;
 }

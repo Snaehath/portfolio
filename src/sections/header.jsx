@@ -2,8 +2,9 @@ import { useState } from "react";
 import s from "/icons/sletter.png";
 import n from "/icons/nletter.png";
 import { Menu, X } from "lucide-react"; // Lucide icons
+import Lightsaber from "../components/lightsaber";
 
-const Header = () => {
+const Header = ({on,setOn}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -13,7 +14,7 @@ const Header = () => {
   const navItems = ["Home", "About", "Projects", "Contact"];
 
   return (
-    <header className="fixed top-0 left-0 w-full py-4 px-[9%] bg-black/30 lg:backdrop-blur-md flex justify-between items-center z-50 shadow-md border-b border-white/10">
+    <header className="fixed top-0 left-0 w-full py-4 px-[9%] bg-black/40 lg:backdrop-blur-md flex justify-between items-center z-50 shadow-md border-b border-white/10">
       {/* Logo */}
       <a
         href="#home"
@@ -35,7 +36,11 @@ const Header = () => {
               <a href={`#${item.toLowerCase()}`}>{item}</a>
             </li>
           ))}
+          
         </ul>
+        <li className="list-none absolute left-5">
+            <Lightsaber on={on} setOn={setOn}/>
+          </li>
       </nav>
 
       {/* Mobile Menu Button */}

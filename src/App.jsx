@@ -5,36 +5,24 @@ import Project from "./pages/project";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Loader from "./sections/loader";
-import Lab from "./pages/lab";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 const App = () => {
-  const [showLab, setShowLab] = useState(false);
-
-  useEffect(() => {
-    if (
-      window.location.pathname === "/lab" ||
-      window.location.hash === "#lab"
-    ) {
-      setShowLab(true);
-    }
-  }, []);
-
+  const [on, setOn] = useState(true);
   return (
-    <div className="w-full h-full bg-black text-white scroll-smooth">
-      {showLab ? (
-        <Lab />
-      ) : (
-        <>
-          <Header />
-          <Home />
-          <Loader title="ABOUT" />
-          <About />
-          <Loader title="PROJECTS" />
-          <Project />
-          <Loader title="CONTACT" />
-          <Contact />
-        </>
-      )}
+    <div
+      className={`min-h-screen w-full overflow-x-hidden transition-colors duration-700 ${
+        on ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      <Header on={on} setOn={setOn} />
+      <Home on={on} />
+      <Loader title="ABOUT" />
+      <About />
+      <Loader title="PROJECTS" />
+      <Project />
+      <Loader title="CONTACT" />
+      <Contact />
     </div>
   );
 };
