@@ -17,11 +17,11 @@ const App = () => {
     >
       <Header on={on} setOn={setOn} />
       <Home on={on} />
-      <Loader title="ABOUT" />
+      <Loader title="ABOUT" on={on} />
       <About />
-      <Loader title="PROJECTS" />
+      <Loader title="PROJECTS" on={on} />
       <Project />
-      <Loader title="CONTACT" />
+      <Loader title="CONTACT" on={on} />
       <Contact />
     </div>
   );

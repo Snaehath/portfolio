@@ -61,7 +61,7 @@ const Home = ({ on }) => {
           </span>
         </h3>
 
-        <p className="text-base sm:text-lg max-w-xl">
+        <p className="text-base sm:text-lg max-w-xl text-gray-500">
           Code is where creativity meets logic — a single line can build worlds
           or solve problems. Keep learning, keep building.
         </p>
