@@ -27,6 +27,24 @@ const Contact = () => {
           </a>{" "}
           and let’s chat.
         </p>
+        <a
+          href="/portfolio/Resume_Snaehath.pdf"
+          download
+          className="inline-block px-6 py-3 border-2 border-red-600 text-red-600 font-bold tracking-wider uppercase rounded-md hover:bg-red-600 hover:text-black transition duration-300 shadow-[0_0_10px_rgba(255,0,0,0.6)] dark:shadow-[0_0_15px_rgba(255,0,0,0.8)]"
+        >
+          Download Resume
+        </a>
+
+        <span className="text-2xl mb-8 text-red-600 font-bold mt-5">
+          <Typewriter
+            options={{
+              strings: ["Thanks for visiting!", "Have a great day!"],
+              autoStart: true,
+              loop: false,
+              cursor: "",
+            }}
+          />
+        </span>
       </div>
     </section>
   );

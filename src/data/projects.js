@@ -14,7 +14,7 @@ export const Projects = [
     title: "ReadHub",
     description: "Your digital reading companion with AI-powered features.",
     tech_stack: "Next.js, Tailwind CSS, Node.js, Express, MongoDB, ShadCN, Gemini API",
-    link: "https://readhub-frontend.onrender.com/",
+    link: "https://readhub-frontend.vercel.app/",
   },
   {
     image: proj9,

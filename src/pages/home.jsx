@@ -32,14 +32,7 @@ const Home = ({ on }) => {
       {/* Intro Content */}
       <div className="text-center lg:text-left">
         <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold">
-          Hi, it's{" "}
-          <span
-            className={`text-red-600 ${
-              on ? "diagonal-strike black" : "diagonal-strike white"
-            } `}
-          >
-            Snaehath
-          </span>
+          Hi, it's <span className="text-red-600">Snaehath</span>
         </h1>
 
         <h3 className="flex justify-center lg:justify-start items-center font-bold text-2xl sm:text-4xl lg:text-6xl mb-4 mt-2">
@@ -61,7 +54,7 @@ const Home = ({ on }) => {
           </span>
         </h3>
 
-        <p className="text-base sm:text-lg max-w-xl text-gray-500">
+        <p className="text-base sm:text-lg max-w-xl text-gray-600">
           Code is where creativity meets logic — a single line can build worlds
           or solve problems. Keep learning, keep building.
         </p>
