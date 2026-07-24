@@ -97,7 +97,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 border-l border-t border-rule-soft">
+        <div className="grid grid-cols-1 sm:grid-cols-2 border-l border-t border-rule-soft">
           {displayedProjects.map((proj) => (
             <ProjectCard 
               key={proj.id} 
@@ -131,15 +131,15 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
             <h2 className="text-serif text-2xl font-medium tracking-tight">Hackathons & Certifications</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-6 auto-rows-[160px] gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-6 auto-rows-auto sm:auto-rows-[160px] gap-4">
             {data.achievements.map((ach, idx) => {
               const isHackathon = ach.title.includes("MAMMATHON");
               return (
                 <div 
                   key={idx} 
                   className={cn(
-                    "group relative overflow-hidden p-6 border-2 border-rule transition-all hover:bg-ink/[0.02]",
-                    isHackathon ? "md:col-span-4 md:row-span-2" : "md:col-span-2 md:row-span-1"
+                    "group relative overflow-hidden p-6 border-2 border-rule transition-all hover:bg-ink/[0.02] min-h-[160px]",
+                    isHackathon ? "sm:col-span-4 sm:row-span-2" : "sm:col-span-2 sm:row-span-1"
                   )}
                 >
                   <div className="absolute top-4 right-4 text-mono text-[10px] text-ink-3 opacity-40 group-hover:opacity-100 transition-opacity">
@@ -153,7 +153,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
                       </div>
                       <h3 className={cn(
                         "text-serif leading-tight",
-                        isHackathon ? "text-3xl mb-4" : "text-lg mb-2"
+                        isHackathon ? "text-2xl sm:text-3xl mb-4" : "text-lg mb-2"
                       )}>
                         {ach.title}
                       </h3>
@@ -196,14 +196,14 @@ const ExperienceEntry: React.FC<{ exp: Experience; defaultOpen: boolean; dimmed:
         dimmed ? "opacity-30 blur-[0.5px]" : "opacity-100"
       )}
     >
-      <header className="flex justify-between items-baseline gap-4 cursor-pointer group print:cursor-default" onClick={() => setIsOpen(!isOpen)}>
+      <header className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-4 cursor-pointer group print:cursor-default" onClick={() => setIsOpen(!isOpen)}>
         <div className="flex-1">
           <div className="text-mono text-[9px] text-ink-3 uppercase tracking-[0.2em] mb-1">{exp.type}</div>
-          <h3 className="text-serif text-2xl group-hover:text-accent transition-colors print:group-hover:text-ink">
+          <h3 className="text-serif text-xl sm:text-2xl group-hover:text-accent transition-colors print:group-hover:text-ink">
             {exp.role} <span className="text-ink-2 font-sans not-italic text-sm font-medium ml-2 opacity-60">/ {exp.company}</span>
           </h3>
         </div>
-        <div className="text-mono text-[10.5px] text-ink-3 text-right">
+        <div className="text-mono text-[10.5px] text-ink-3 sm:text-right">
           {exp.start} — {exp.end}
         </div>
       </header>
@@ -256,19 +256,19 @@ const ProjectCard: React.FC<{ proj: Project; dimmed: boolean; activeSkills: Set<
       onMouseMove={(ev) => onPeek(proj, ev)}
       onMouseLeave={onPeekEnd}
       className={cn(
-        "project relative px-8 py-10 transition-all duration-300 border-r border-b border-rule-soft",
+        "project relative px-5 py-6 sm:px-8 sm:py-10 transition-all duration-300 border-r border-b border-rule-soft",
         dimmed ? "opacity-30 blur-[0.5px]" : "opacity-100",
         "hover:bg-ink/[0.015] print:hover:bg-transparent group"
       )}
     >
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-serif text-2xl group-hover:text-accent transition-colors leading-tight">{proj.name}</h3>
-        <span className="text-mono text-[10px] text-ink-3 bg-paper px-1.5 py-0.5 border border-rule-soft">{proj.year}</span>
+      <div className="flex justify-between items-start mb-4 gap-2">
+        <h3 className="text-serif text-xl sm:text-2xl group-hover:text-accent transition-colors leading-tight">{proj.name}</h3>
+        <span className="text-mono text-[10px] text-ink-3 bg-paper px-1.5 py-0.5 border border-rule-soft shrink-0">{proj.year}</span>
       </div>
 
-      <p className="text-[13.5px] text-ink-2 leading-relaxed line-clamp-2 print:line-clamp-none h-11 print:h-auto"><FormattedText text={proj.summary} /></p>
+      <p className="text-[13.5px] text-ink-2 leading-relaxed line-clamp-2 print:line-clamp-none sm:h-11 print:h-auto"><FormattedText text={proj.summary} /></p>
 
-      <div className="flex flex-wrap gap-1.5 mt-8">
+      <div className="flex flex-wrap gap-1.5 mt-6 sm:mt-8">
         {proj.stack.map(skill => (
           <span key={skill} className={cn(
             "chip text-mono text-[9px] px-1.5 py-0.5 border border-rule-soft transition-all uppercase tracking-wider",

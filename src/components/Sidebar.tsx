@@ -13,7 +13,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
   const contact = data.contact;
 
   return (
-    <aside className="w-full pr-8 flex flex-col gap-10">
+    <aside className="w-full sm:pr-8 mb-12 sm:mb-0 flex flex-col gap-10">
       {/* Name & Role */}
       <div className="flex flex-col">
         <h2 className="text-serif text-[22px] text-ink leading-tight">{data.name}</h2>

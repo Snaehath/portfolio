@@ -105,20 +105,20 @@ export const PortfolioContainer: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <div className="max-w-[1280px] mx-auto px-6 md:px-16 py-14">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-12 py-8 sm:py-14">
         {/* Masthead */}
         <header className="mast border-b-2 border-rule pb-6 mb-12 relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-6px] after:border-b after:border-rule">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-            <div className="hidden md:block text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
+          <div className="flex flex-col sm:flex-row justify-between items-end gap-6">
+            <div className="hidden sm:block text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
               Folio v.2 / {new Date().getFullYear()}
             </div>
             
             <div className="flex-1 text-center">
-              <h1 className="text-serif text-5xl md:text-8xl leading-[0.95] tracking-tight font-medium uppercase">{RESUME_DATA.name}</h1>
+              <h1 className="text-serif text-5xl sm:text-8xl leading-[0.95] tracking-tight font-medium uppercase">{RESUME_DATA.name}</h1>
               <div className="text-mono text-[11px] mt-3 text-ink-2 tracking-[0.3em] uppercase">{RESUME_DATA.tagline}</div>
             </div>
 
-            <div className="hidden md:flex flex-col items-end gap-1.5 text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
+            <div className="hidden sm:flex flex-col items-end gap-1.5 text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
               <div className="text-right">
                 {new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}
               </div>
@@ -131,9 +131,9 @@ export const PortfolioContainer: React.FC = () => {
         </header>
 
         {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-0 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-[280px_1fr] gap-0 relative">
           {!isNinjaMode && (
-            <div className="hidden lg:block absolute top-0 bottom-0 left-[280px] border-l border-rule-soft" />
+            <div className="hidden sm:block absolute top-0 bottom-0 left-[280px] border-l border-rule-soft" />
           )}
 
           <AnimatePresence mode="wait">
@@ -155,7 +155,7 @@ export const PortfolioContainer: React.FC = () => {
             )}
           </AnimatePresence>
 
-          <div className={cn("transition-all duration-300", !isNinjaMode ? "lg:pl-12" : "lg:pl-0 lg:col-span-2")}>
+          <div className={cn("transition-all duration-300", !isNinjaMode ? "sm:pl-12" : "sm:pl-0 sm:col-span-2")}>
             <MainColumn 
               data={RESUME_DATA} 
               activeSkills={activeSkills}
@@ -167,12 +167,12 @@ export const PortfolioContainer: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <footer className="mt-20 pt-6 border-t-2 border-rule grid grid-cols-1 md:grid-cols-3 items-center gap-6 text-mono text-[10.5px] text-ink-3">
-          <div className="text-center md:text-left">© {new Date().getFullYear()} SNAEHATH P</div>
+        <footer className="mt-20 pt-6 border-t-2 border-rule grid grid-cols-1 sm:grid-cols-3 items-center gap-6 text-mono text-[10.5px] text-ink-3">
+          <div className="text-center sm:text-left">© {new Date().getFullYear()} SNAEHATH P</div>
           <div className="text-serif italic text-sm text-center text-ink-2 lowercase">
             architecting excellence through code and design
           </div>
-          <div className="text-center md:text-right uppercase tracking-widest">React / TypeScript / Vite / Editorial</div>
+          <div className="text-center sm:text-right uppercase tracking-widest">React / TypeScript / Vite / Editorial</div>
         </footer>
       </div>
 
