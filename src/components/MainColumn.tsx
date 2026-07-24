@@ -62,7 +62,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
     <main className="flex-1 flex flex-col gap-16">
       {/* Experience */}
       <section id="experience" className="flex flex-col">
-        <div className="flex items-center justify-between border-b-2 border-rule pb-2 mb-6">
+        <div className="flex items-center justify-between border-b-2 border-rule pb-2 mb-2">
           <div className="flex items-center gap-3">
             <span className="text-mono text-[10px] text-ink-3">§ 05</span>
             <h2 className="text-serif text-2xl font-medium tracking-tight">Experience</h2>
@@ -192,7 +192,7 @@ const ExperienceEntry: React.FC<{ exp: Experience; defaultOpen: boolean; dimmed:
   return (
     <article 
       className={cn(
-        "entry relative py-8 border-b border-rule-soft last:border-none transition-all duration-300",
+        "entry relative first:pt-3 py-6 border-b border-rule-soft last:border-none transition-all duration-300",
         dimmed ? "opacity-30 blur-[0.5px]" : "opacity-100"
       )}
     >

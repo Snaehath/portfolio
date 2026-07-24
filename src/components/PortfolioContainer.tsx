@@ -51,7 +51,7 @@ export const PortfolioContainer: React.FC = () => {
       }
       if ((e.metaKey || e.ctrlKey) && e.key === "p") {
         e.preventDefault();
-        window.open('/resume.pdf', '_blank');
+        window.open('resume.pdf', '_blank');
       }
       if (e.key === "Escape") {
         setShowSearch(false);
@@ -313,10 +313,10 @@ export const PortfolioContainer: React.FC = () => {
                       <button onClick={() => { setShowTweaks(false); setShowSearch(true); }} className="hover:text-accent flex items-center gap-1.5 transition-colors">
                         <Command size={11} />K · INDEX SEARCH
                       </button>
-                      <button onClick={() => window.open('/resume.pdf', '_blank')} className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <button onClick={() => window.open('resume.pdf', '_blank')} className="hover:text-accent flex items-center gap-1.5 transition-colors">
                         <Command size={11} />P · VIEW/PRINT PDF
                       </button>
-                      <a href="/resume.pdf" download className="hover:text-accent flex items-center gap-1.5 transition-colors">
+                      <a href="resume.pdf" download="Snaehath_Resume.pdf" className="hover:text-accent flex items-center gap-1.5 transition-colors">
                         <Command size={11} />D · DOWNLOAD PDF
                       </a>
                    </div>
@@ -422,10 +422,10 @@ const CmdK: React.FC<{ data: PortfolioData; theme: "light" | "dark"; onJump: (id
       { tag: "Section", label: "Experience", act: () => onJump("experience") },
       { tag: "Section", label: "Projects", act: () => onJump("projects") },
       { tag: "Section", label: "Achievements", act: () => onJump("achievements") },
-      { tag: "Action", label: "View / Print PDF", meta: "⌘P", act: () => window.open('/resume.pdf', '_blank') },
+      { tag: "Action", label: "View / Print PDF", meta: "⌘P", act: () => window.open('resume.pdf', '_blank') },
       { tag: "Action", label: "Download Resume", meta: "⌘D", act: () => {
          const link = document.createElement('a');
-         link.href = '/resume.pdf';
+         link.href = 'resume.pdf';
          link.download = 'Snaehath_Resume.pdf';
          link.click();
       }},
