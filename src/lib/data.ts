@@ -145,12 +145,12 @@ export const RESUME_DATA: PortfolioData = {
       name: "TinyTTS",
       year: "2026",
       stack: ["PyTorch", "Python", "Flow Matching", "Vocos"],
-      summary: "Compact, non-autoregressive text-to-speech model designed for low-latency synthesis on consumer hardware.",
+      summary: "In-progress compact, non-autoregressive text-to-speech model for low-latency synthesis on consumer hardware.",
       preview: "system",
       links: { github: "https://github.com/Snaehath/Tinytts" },
       bullets: [
-        "Built a 21M-parameter speech pipeline combining a Transformer text encoder, monotonic alignment, conditional flow matching, and a pretrained Vocos vocoder.",
-        "Added expressive controls and measured inference performance on a consumer GPU using a held-out LJSpeech set.",
+        "Developing a 21M-parameter speech pipeline combining a Transformer text encoder, monotonic alignment, conditional flow matching, and a pretrained Vocos vocoder.",
+        "Implementing expressive controls and evaluating inference performance on a consumer GPU using a held-out LJSpeech set.",
       ],
     },
     {
@@ -175,6 +175,18 @@ export const RESUME_DATA: PortfolioData = {
       bullets: [
         "Built for Bessemer Tech Catalyst 2026: Gemini classifies questions into approved intents and extracts typed fields; it never writes SQL or calculates financial answers.",
         "Mapped each supported intent to a parameterized SQL template and formatted database results deterministically, with an explainability trace and safe exports.",
+      ],
+    },
+    {
+      id: "decision-model",
+      name: "Rust Decision Model",
+      year: "2026",
+      stack: ["Rust", "Candle", "Machine Learning", "Model Training", "Evaluation"],
+      summary: "In-progress Rust research project exploring decision models with a Candle-based training and inference pipeline.",
+      preview: "system",
+      bullets: [
+        "Developing a Rust decision-model pipeline for training and inference with Candle.",
+        "Building benchmark and policy-evaluation workflows to study model behavior and compare decision strategies.",
       ],
     },
     {
@@ -393,6 +405,8 @@ export const RESUME_DATA: PortfolioData = {
       "React",
       "Next.js",
       "React Native",
+      "Flutter",
+      "Dart",
       "Node.js",
       "Express.JS",
       "REST APIs",
@@ -405,7 +419,7 @@ export const RESUME_DATA: PortfolioData = {
   skillProjects: {
     "Next.js": ["readhub", "promptsmith"],
     "React Native": ["aquaflow", "glucotrack", "ledgerly", "lifelog", "readhub-mobile"],
-    Rust: ["spotlight-win", "byte"],
+    Rust: ["decision-model", "spotlight-win", "byte"],
     Tauri: ["spotlight-win", "byte", "devbridge"],
     Python: ["cmrl"],
     AI: ["readhub", "promptsmith", "byte", "rag-kit"],
