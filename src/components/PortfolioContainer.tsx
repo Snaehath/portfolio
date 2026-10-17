@@ -11,10 +11,11 @@ export const PortfolioContainer: React.FC = () => {
   
   // Tweak States
   const [theme, setTheme] = useState<"light" | "dark">("light");
-  const [pairing, setPairing] = useState<"Editorial" | "Classical" | "Brutal" | "Mono">("Editorial");
+  const [pairing, setPairing] = useState<"Editorial" | "Classical">("Editorial");
   const [density, setDensity] = useState<"airy" | "compact">("airy");
   const [texture] = useState<"on" | "off">("on");
   const [isNinjaMode, setIsNinjaMode] = useState(false);
+  const [locale, setLocale] = useState<"EN" | "DE">("EN");
   
   const [showTweaks, setShowTweaks] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -31,7 +32,8 @@ export const PortfolioContainer: React.FC = () => {
     root.setAttribute("data-pairing", pairing);
     root.setAttribute("data-density", density);
     root.setAttribute("data-texture", texture);
-  }, [theme, pairing, density, texture]);
+    root.lang = locale === "DE" ? "de" : "en";
+  }, [theme, pairing, density, texture, locale]);
 
   // Handle Mode Change with Shutter Effect
   const toggleNinja = (val: boolean) => {
@@ -109,10 +111,6 @@ export const PortfolioContainer: React.FC = () => {
         {/* Masthead */}
         <header className="mast border-b-2 border-rule pb-6 mb-12 relative after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-[-6px] after:border-b after:border-rule">
           <div className="flex flex-col sm:flex-row justify-between items-end gap-6">
-            <div className="hidden sm:block text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
-              Folio v.2 / {new Date().getFullYear()}
-            </div>
-            
             <div className="flex-1 text-center">
               <h1 className="text-serif text-5xl sm:text-8xl leading-[0.95] tracking-tight font-medium uppercase">{RESUME_DATA.name}</h1>
               <div className="text-mono text-[11px] mt-3 text-ink-2 tracking-[0.3em] uppercase">{RESUME_DATA.tagline}</div>
@@ -147,6 +145,7 @@ export const PortfolioContainer: React.FC = () => {
               >
                 <Sidebar 
                   data={RESUME_DATA} 
+                  locale={locale}
                   activeSkills={activeSkills} 
                   toggleSkill={toggleSkill} 
                   clearSkills={clearSkills} 
@@ -158,6 +157,7 @@ export const PortfolioContainer: React.FC = () => {
           <div className={cn("transition-all duration-300", !isNinjaMode ? "sm:pl-12" : "sm:pl-0 sm:col-span-2")}>
             <MainColumn 
               data={RESUME_DATA} 
+              locale={locale}
               activeSkills={activeSkills}
               onPeek={onPeek}
               onPeekEnd={onPeekEnd}
@@ -218,7 +218,7 @@ export const PortfolioContainer: React.FC = () => {
                   </button>
                </div>
                
-               <ProjectsModalContent data={RESUME_DATA} />
+               <ProjectsModalContent data={RESUME_DATA} locale={locale} />
             </motion.div>
           </div>
         )}
@@ -251,11 +251,11 @@ export const PortfolioContainer: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
-              className="glass w-[340px] shadow-[12px_12px_0_var(--rule)] overflow-hidden flex flex-col border-2 border-rule"
+              className="glass w-[min(340px,calc(100vw-2rem))] max-h-[calc(100dvh-6rem)] shadow-[12px_12px_0_var(--rule)] overflow-y-auto flex flex-col border-2 border-rule"
             >
               <div className="flex justify-between items-center bg-paper-2 border-b-2 border-rule px-4 py-3">
                 <span className="text-mono text-[10px] font-bold tracking-[0.3em] uppercase">Controller</span>
-                <button onClick={() => setShowTweaks(false)} className="hover:text-accent transition-colors"><X size={16} /></button>
+                <button aria-label="Close controller" onClick={() => setShowTweaks(false)} className="hover:text-accent transition-colors"><X size={16} /></button>
               </div>
               
               <div className="p-6 flex flex-col gap-6 bg-paper/80 backdrop-blur-md">
@@ -277,7 +277,7 @@ export const PortfolioContainer: React.FC = () => {
                 <div className="tweak-row">
                   <span className="tweak-label">TYPOGRAPHY</span>
                   <div className="tweak-opts">
-                    {(["Editorial", "Classical", "Brutal", "Mono"] as const).map(p => (
+                    {(["Editorial", "Classical"] as const).map(p => (
                       <button key={p} onClick={() => setPairing(p)} className={cn("tweak-opt", pairing === p && "on")}>{p}</button>
                     ))}
                   </div>
@@ -301,10 +301,11 @@ export const PortfolioContainer: React.FC = () => {
                 </div>
 
                 <div className="tweak-row">
-                  <span className="tweak-label">LOCALIZATION</span>
+                  <span className="tweak-label">{locale === "DE" ? "SPRACHE" : "LOCALIZATION"}</span>
                   <div className="tweak-opts">
-                    <button className="tweak-opt on">EN</button>
-                    <button className="tweak-opt">JP</button>
+                    {(["EN", "DE"] as const).map(language => (
+                      <button key={language} aria-pressed={locale === language} onClick={() => setLocale(language)} className={cn("tweak-opt", locale === language && "on")}>{language}</button>
+                    ))}
                   </div>
                 </div>
 
@@ -340,7 +341,7 @@ export const PortfolioContainer: React.FC = () => {
   );
 };
 
-const ProjectsModalContent: React.FC<{ data: PortfolioData }> = ({ data }) => {
+const ProjectsModalContent: React.FC<{ data: PortfolioData; locale: "EN" | "DE" }> = ({ data, locale }) => {
   const [q, setQ] = useState("");
   const [activeFilter, setActiveFilter] = useState("All tools");
 
@@ -364,7 +365,7 @@ const ProjectsModalContent: React.FC<{ data: PortfolioData }> = ({ data }) => {
           <input 
             value={q}
             onChange={e => setQ(e.target.value)}
-            placeholder="Search projects..."
+            placeholder={locale === "DE" ? "Projekte suchen …" : "Search projects..."}
             className="flex-1 bg-transparent outline-none text-serif text-xl italic"
           />
         </div>
@@ -393,6 +394,7 @@ const ProjectsModalContent: React.FC<{ data: PortfolioData }> = ({ data }) => {
                 <span className="text-mono text-[10px] text-ink-3">{p.year}</span>
              </div>
              <p className="text-[13.5px] text-ink-2 leading-relaxed mb-6 line-clamp-2">{p.summary}</p>
+             {p.links?.github && <a href={p.links.github} target="_blank" rel="noreferrer" className="inline-flex mb-4 text-mono text-[9px] text-accent hover:underline uppercase tracking-widest">GitHub ↗</a>}
              <div className="flex flex-wrap gap-1.5">
                 {p.stack.map(s => (
                   <span key={s} className="px-1.5 py-0.5 border border-rule-soft text-mono text-[9px] text-ink-3 uppercase tracking-wider">

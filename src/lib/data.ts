@@ -1,12 +1,10 @@
 export interface PortfolioData {
   name: string;
   tagline: string;
-  currently: string;
   contact: {
     github: string;
     email: string;
     linkedin: string;
-    portfolio: string;
   };
   experience: Experience[];
   projects: Project[];
@@ -46,8 +44,6 @@ export interface Project {
 export interface Education {
   school: string;
   degree: string;
-  start: string;
-  end: string;
 }
 
 export interface Achievement {
@@ -59,13 +55,10 @@ export interface Achievement {
 export const RESUME_DATA: PortfolioData = {
   name: "Snaehath P",
   tagline: "AI & Fullstack · Mobile · Desktop Developer",
-  currently:
-    "Actively exploring new opportunities in Fullstack, AI, Mobile & Desktop Engineering.",
   contact: {
     github: "Snaehath",
     email: "snaehath972002@gmail.com",
     linkedin: "snaehath-p-755997364",
-    portfolio: "snaehath.github.io/portfolio",
   },
   experience: [
     {
@@ -100,6 +93,90 @@ export const RESUME_DATA: PortfolioData = {
     },
   ],
   projects: [
+    {
+      id: "tinyimage",
+      name: "TinySprite (TinyImage)",
+      year: "2026",
+      stack: ["PyTorch", "CUDA", "MaskGIT", "VQ-VAE"],
+      summary: "20M-parameter pixel-art generator trained from scratch to create deterministic 32×32 RGBA game sprites.",
+      preview: "image-gen",
+      bullets: [
+        "Designed and trained a compact VQ-VAE tokenizer and MaskGIT generator with category conditioning across seven sprite categories.",
+        "Built a browser studio and inference API with seeded generation, batch export, transparent PNG output, and nearest-neighbor upscaling.",
+      ],
+    },
+    {
+      id: "ai-author-pipeline",
+      name: "AI Author Pipeline",
+      year: "2026",
+      stack: ["Python", "LLM", "Fine-tuning", "Generation Pipeline"],
+      summary: "AI-assisted authoring workflow built around a pretrained model, with a pipeline for developing and generating long-form content.",
+      preview: "image-gen",
+      bullets: ["Developed an AI authoring pipeline and adapted a pretrained model for the project’s writing workflow."],
+    },
+    {
+      id: "tinytext",
+      name: "TinyText",
+      year: "2026",
+      stack: ["PyTorch", "Python", "Transformers", "GQA", "RoPE"],
+      summary: "Small language model family trained from scratch for efficient local inference, with an instruction-tuned 20M release.",
+      preview: "system",
+      links: { github: "https://github.com/Snaehath/tinytext" },
+      bullets: [
+        "Pretrained a 19.27M-parameter decoder-only model on 400M educational tokens and instruction-tuned a release checkpoint.",
+        "Added a bounded reasoning orchestrator with safe arithmetic, constrained output checks, and multi-turn session handling.",
+      ],
+    },
+    {
+      id: "rag-kit",
+      name: "RAG-Kit",
+      year: "2026",
+      stack: ["Node.js", "JavaScript", "RAG", "Embeddings", "Vector Search"],
+      summary: "Lightweight Node.js toolkit for retrieval-augmented generation, with document loaders, pluggable embedding providers, and vector-store adapters.",
+      preview: "system",
+      links: { github: "https://github.com/DoxxKnight-Studios/rag-kit" },
+      bullets: [
+        "Built an end-to-end retrieval flow for chunking and indexing documents, searching relevant passages, and returning answers with their sources.",
+        "Added local and cloud embedding options, in-memory, MongoDB Atlas, and PostgreSQL vector stores, plus text, Markdown, PDF, and URL loaders.",
+      ],
+    },
+    {
+      id: "tinytts",
+      name: "TinyTTS",
+      year: "2026",
+      stack: ["PyTorch", "Python", "Flow Matching", "Vocos"],
+      summary: "Compact, non-autoregressive text-to-speech model designed for low-latency synthesis on consumer hardware.",
+      preview: "system",
+      links: { github: "https://github.com/Snaehath/Tinytts" },
+      bullets: [
+        "Built a 21M-parameter speech pipeline combining a Transformer text encoder, monotonic alignment, conditional flow matching, and a pretrained Vocos vocoder.",
+        "Added expressive controls and measured inference performance on a consumer GPU using a held-out LJSpeech set.",
+      ],
+    },
+    {
+      id: "lumio",
+      name: "Lumio",
+      year: "2026",
+      stack: ["Flutter", "Dart", "SANA", "HTTP"],
+      summary: "Flutter mobile client for generating images with a locally hosted SANA image-generation model.",
+      preview: "mobile",
+      links: { github: "https://github.com/Snaehath/lumio" },
+      bullets: [
+        "Built a mobile interface that connects to a local image-generation service and saves generated images on device.",
+      ],
+    },
+    {
+      id: "tbx-finance-assistant",
+      name: "TBX Finance Assistant",
+      year: "2026",
+      stack: ["React", "TypeScript", "Express", "PostgreSQL", "Gemini"],
+      summary: "Hackathon finance chatbot that grounds answers in seeded PostgreSQL data through validated intents and registered SQL.",
+      preview: "system",
+      bullets: [
+        "Built for Bessemer Tech Catalyst 2026: Gemini classifies questions into approved intents and extracts typed fields; it never writes SQL or calculates financial answers.",
+        "Mapped each supported intent to a parameterized SQL template and formatted database results deterministically, with an explainability trace and safe exports.",
+      ],
+    },
     {
       id: "spotlight-win",
       name: "Spotlight-Win v0.4",
@@ -161,18 +238,6 @@ export const RESUME_DATA: PortfolioData = {
         "Built a **Streaming Investigative Engine** with real-time activity console.",
         "Integrated **Multi-Perspective AI** for 360-degree explanation of complex events.",
         "Developed a 'Future AI' engine to simulate potential future headlines.",
-      ],
-    },
-    {
-      id: "stampcam",
-      name: "StampCam",
-      year: "2026",
-      stack: ["React Native", "Expo SDK 57", "Expo Camera", "Expo Location", "NativeWind"],
-      summary: "GPS & Timestamp watermarking camera app for field evidence logging and photo sharing.",
-      preview: "mobile",
-      bullets: [
-        "Built custom camera interface with **Expo Camera** and real-time **GPS location watermarking** using **Expo Location**.",
-        "Implemented file system persistence and instant image sharing with **Expo Sharing** and **NativeWind** styling.",
       ],
     },
     {
@@ -334,23 +399,23 @@ export const RESUME_DATA: PortfolioData = {
       "WebSockets",
       "OAuth",
     ],
-    Database: ["MongoDB", "Redis", "SQL"],
-    Tools: ["Docker", "Git", "Postman", "Tauri", "Win32 API", "Figma"],
+    Database: ["PostgreSQL", "MongoDB", "Redis", "SQL"],
+    Tools: ["AWS", "Docker", "Git", "Postman", "Tauri", "Win32 API", "Figma"],
   },
   skillProjects: {
     "Next.js": ["readhub", "promptsmith"],
-    "React Native": ["aquaflow", "stampcam", "glucotrack", "ledgerly", "lifelog", "readhub-mobile"],
+    "React Native": ["aquaflow", "glucotrack", "ledgerly", "lifelog", "readhub-mobile"],
     Rust: ["spotlight-win", "byte"],
     Tauri: ["spotlight-win", "byte", "devbridge"],
     Python: ["cmrl"],
-    AI: ["readhub", "promptsmith", "byte"],
+    AI: ["readhub", "promptsmith", "byte", "rag-kit"],
+    PyTorch: ["tinyimage", "tinytext", "tinytts"],
+    Flutter: ["lumio"],
   },
   education: [
     {
       school: "Sri Venkateswara College of Engineering (SVCE)",
       degree: "B.Tech in Artificial Intelligence and Data Science",
-      start: "2020",
-      end: "2024",
     },
   ],
   certifications: [
@@ -364,6 +429,11 @@ export const RESUME_DATA: PortfolioData = {
       year: "2024",
       detail:
         "Participated in building Pirate Land, a real-time Web3 arcade game featuring one-click Para onboarding and on-chain move verification via Celestia.",
+    },
+    {
+      title: "Bessemer Tech Catalyst",
+      year: "2026",
+      detail: "Built TBX Finance Assistant, a natural-language finance chatbot that uses Gemini for intent recognition and answers from PostgreSQL through validated, parameterized SQL.",
     },
   ],
 };

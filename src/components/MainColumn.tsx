@@ -19,13 +19,15 @@ const FormattedText: React.FC<{ text: string }> = ({ text }) => {
 
 interface MainColumnProps {
   data: PortfolioData;
+  locale: "EN" | "DE";
   activeSkills: Set<string>;
   onPeek: (p: Project, ev: React.MouseEvent) => void;
   onPeekEnd: () => void;
   onShowAllProjects: () => void;
 }
 
-export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPeek, onPeekEnd, onShowAllProjects }) => {
+export const MainColumn: React.FC<MainColumnProps> = ({ data, locale, activeSkills, onPeek, onPeekEnd, onShowAllProjects }) => {
+  const de = locale === "DE";
   const affectedExp = new Set<string>();
   const affectedProj = new Set<string>();
   
@@ -56,19 +58,45 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
   }
 
   const hasFilter = activeSkills.size > 0;
-  const displayedProjects = data.projects.slice(0, 5);
+  const featuredIds = ["readhub", "aquaflow", "spotlight-win", "rag-kit"];
+  const featuredProjects = featuredIds
+    .map(id => data.projects.find(project => project.id === id))
+    .filter((project): project is Project => Boolean(project));
 
   return (
     <main className="flex-1 flex flex-col gap-16">
+      <section className="relative border-b-2 border-rule pb-8 sm:pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] lg:items-end gap-6 lg:gap-12">
+          <div>
+            <span className="text-mono text-[10px] text-accent uppercase tracking-[0.2em]">{de ? "KI · Full-Stack · Mobile · Desktop" : "AI · Full-stack · Mobile · Desktop"}</span>
+            <h2 className="text-serif text-4xl sm:text-5xl leading-[1.02] tracking-tight mt-4 max-w-2xl">
+              {de ? "Ich mache aus komplexen Ideen nützliche Software." : "I turn complex ideas into useful software."}
+            </h2>
+          </div>
+          <div className="lg:border-l lg:border-rule-soft lg:pl-7">
+            <p className="text-[14px] sm:text-[15px] text-ink-2 leading-relaxed max-w-xl">
+              {de
+                ? "Ich entwickle KI-Produkte, Entwicklerwerkzeuge und Apps mit Blick auf das ganze System – vom Modell und Backend bis zur sorgfältig gestalteten Oberfläche."
+                : "I build AI products, developer tools, and apps with an eye for the whole system—from the model and backend to a carefully crafted interface."}
+            </p>
+            <div className="flex flex-wrap gap-2 mt-5" aria-label={de ? "Schwerpunkte" : "Areas of focus"}>
+              {(de ? ["Modell-Entwicklung", "Retrieval", "Produktentwicklung"] : ["Model building", "Retrieval", "Product engineering"]).map(item => (
+                <span key={item} className="border border-rule-soft px-2.5 py-1 text-mono text-[9px] text-ink-3">{item}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Experience */}
       <section id="experience" className="flex flex-col">
         <div className="flex items-center justify-between border-b-2 border-rule pb-2 mb-2">
           <div className="flex items-center gap-3">
             <span className="text-mono text-[10px] text-ink-3">§ 05</span>
-            <h2 className="text-serif text-2xl font-medium tracking-tight">Experience</h2>
+            <h2 className="text-serif text-2xl font-medium tracking-tight">{de ? "Berufserfahrung" : "Experience"}</h2>
           </div>
           <span className="text-mono text-[10px] text-ink-3 uppercase tracking-widest">
-            {hasFilter ? `${affectedExp.size} matches` : "Chronological Archive"}
+            {hasFilter ? `${affectedExp.size} ${de ? "Treffer" : "matches"}` : (de ? "Beruflicher Werdegang" : "Chronological Archive")}
           </span>
         </div>
         
@@ -90,18 +118,19 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
         <div className="flex items-center justify-between border-b-2 border-rule pb-2 mb-6">
           <div className="flex items-center gap-3">
             <span className="text-mono text-[10px] text-ink-3">§ 06</span>
-            <h2 className="text-serif text-2xl font-medium tracking-tight">Selected Projects</h2>
+            <h2 className="text-serif text-2xl font-medium tracking-tight">{de ? "Ausgewählte Projekte" : "Selected Projects"}</h2>
           </div>
           <span className="text-mono text-[10px] text-ink-3 uppercase tracking-widest">
-            {hasFilter ? `${affectedProj.size} selections` : "Curated Selection"}
+            {hasFilter ? `${affectedProj.size} ${de ? "Auswahlen" : "selections"}` : (de ? "Projektauswahl" : "Curated Selection")}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 border-l border-t border-rule-soft">
-          {displayedProjects.map((proj) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 border-l border-t border-rule-soft">
+          {featuredProjects.map((proj) => (
             <ProjectCard 
               key={proj.id} 
               proj={proj} 
+              featured
               dimmed={hasFilter && !affectedProj.has(proj.id)}
               activeSkills={activeSkills}
               onPeek={onPeek}
@@ -114,7 +143,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
             className="group relative flex items-center justify-center border-r border-b border-rule-soft cursor-pointer py-16 transition-all hover:bg-ink/[0.03]"
           >
              <div className="bg-paper border-2 border-rule px-8 py-3 shadow-[6px_6px_0_var(--rule-soft)] group-hover:shadow-none group-hover:translate-x-1 group-hover:translate-y-1 transition-all">
-                <span className="text-mono text-[11px] font-bold tracking-widest uppercase">View More →</span>
+                <span className="text-mono text-[11px] font-bold tracking-widest uppercase">{de ? "Mehr anzeigen →" : "View More →"}</span>
              </div>
              {/* Decorative lines */}
              <div className="absolute top-4 left-4 w-12 h-[1px] bg-rule-soft opacity-20" />
@@ -128,18 +157,17 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
         <section id="achievements" className="flex flex-col">
           <div className="flex items-center gap-3 border-b-2 border-rule pb-2 mb-6">
             <span className="text-mono text-[10px] text-ink-3">§ 07</span>
-            <h2 className="text-serif text-2xl font-medium tracking-tight">Hackathons & Certifications</h2>
+            <h2 className="text-serif text-2xl font-medium tracking-tight">{de ? "Hackathons & Zertifikate" : "Hackathons & Certifications"}</h2>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-6 auto-rows-auto sm:auto-rows-[160px] gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {data.achievements.map((ach, idx) => {
-              const isHackathon = ach.title.includes("MAMMATHON");
+              const isHackathon = /MAMMATHON|Bessemer/i.test(ach.title);
               return (
                 <div 
                   key={idx} 
                   className={cn(
-                    "group relative overflow-hidden p-6 border-2 border-rule transition-all hover:bg-ink/[0.02] min-h-[160px]",
-                    isHackathon ? "sm:col-span-4 sm:row-span-2" : "sm:col-span-2 sm:row-span-1"
+                    "group relative overflow-hidden p-6 border-2 border-rule transition-all hover:bg-ink/[0.02] min-h-[160px]"
                   )}
                 >
                   <div className="absolute top-4 right-4 text-mono text-[10px] text-ink-3 opacity-40 group-hover:opacity-100 transition-opacity">
@@ -149,7 +177,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
                   <div className="flex flex-col h-full justify-between">
                     <div>
                       <div className="text-mono text-[10px] text-ink-3 mb-2 uppercase tracking-[0.2em]">
-                        {isHackathon ? "Participation" : "Achievement"}
+                        {isHackathon ? (de ? "Teilnahme" : "Participation") : (de ? "Auszeichnung" : "Achievement")}
                       </div>
                       <h3 className={cn(
                         "text-serif leading-tight",
@@ -168,7 +196,7 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, activeSkills, onPe
                     {isHackathon && (
                       <div className="mt-auto pt-6 flex items-center gap-3">
                         <div className="h-[1px] flex-1 bg-rule-soft" />
-                        <span className="text-mono text-[9px] uppercase tracking-widest text-ink-3">Event Record</span>
+                        <span className="text-mono text-[9px] uppercase tracking-widest text-ink-3">{de ? "Veranstaltung" : "Event Record"}</span>
                       </div>
                     )}
                   </div>
@@ -249,18 +277,20 @@ const ExperienceEntry: React.FC<{ exp: Experience; defaultOpen: boolean; dimmed:
   );
 };
 
-const ProjectCard: React.FC<{ proj: Project; dimmed: boolean; activeSkills: Set<string>; onPeek: (p: Project, ev: React.MouseEvent) => void; onPeekEnd: () => void }> = ({ proj, dimmed, activeSkills, onPeek, onPeekEnd }) => {
+const ProjectCard: React.FC<{ proj: Project; featured?: boolean; dimmed: boolean; activeSkills: Set<string>; onPeek: (p: Project, ev: React.MouseEvent) => void; onPeekEnd: () => void }> = ({ proj, featured = false, dimmed, activeSkills, onPeek, onPeekEnd }) => {
   return (
     <div
       onMouseEnter={(ev) => onPeek(proj, ev)}
       onMouseMove={(ev) => onPeek(proj, ev)}
       onMouseLeave={onPeekEnd}
       className={cn(
-        "project relative px-5 py-6 sm:px-8 sm:py-10 transition-all duration-300 border-r border-b border-rule-soft",
+        "project relative px-5 py-6 sm:px-7 sm:py-8 transition-all duration-300 border-r border-b border-rule-soft",
+        featured && "min-h-[240px] sm:min-h-[270px]",
         dimmed ? "opacity-30 blur-[0.5px]" : "opacity-100",
         "hover:bg-ink/[0.015] print:hover:bg-transparent group"
       )}
     >
+      {featured && <div className="text-mono text-[9px] text-accent uppercase tracking-[0.18em] mb-4">Featured project</div>}
       <div className="flex justify-between items-start mb-4 gap-2">
         <h3 className="text-serif text-xl sm:text-2xl group-hover:text-accent transition-colors leading-tight">{proj.name}</h3>
         <span className="text-mono text-[10px] text-ink-3 bg-paper px-1.5 py-0.5 border border-rule-soft shrink-0">{proj.year}</span>
@@ -278,6 +308,12 @@ const ProjectCard: React.FC<{ proj: Project; dimmed: boolean; activeSkills: Set<
           </span>
         ))}
       </div>
+
+      {proj.links?.github && (
+        <a href={proj.links.github} target="_blank" rel="noreferrer" onClick={event => event.stopPropagation()} className="inline-flex mt-5 text-mono text-[9px] text-accent hover:underline uppercase tracking-widest">
+          GitHub ↗
+        </a>
+      )}
 
       {/* Grid Decals */}
       <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full border border-rule-soft opacity-0 group-hover:opacity-100 transition-opacity" />

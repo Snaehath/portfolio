@@ -4,13 +4,15 @@ import { cn } from "@/lib/utils";
 
 interface SidebarProps {
   data: PortfolioData;
+  locale: "EN" | "DE";
   activeSkills: Set<string>;
   toggleSkill: (skill: string) => void;
   clearSkills: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkill, clearSkills }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ data, locale, activeSkills, toggleSkill, clearSkills }) => {
   const contact = data.contact;
+  const de = locale === "DE";
 
   return (
     <aside className="w-full sm:pr-8 mb-12 sm:mb-0 flex flex-col gap-10">
@@ -19,11 +21,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
         <h2 className="text-serif text-[22px] text-ink leading-tight">{data.name}</h2>
         <div className="text-mono text-[10px] text-ink-2 mt-1 uppercase tracking-wider">{data.tagline}</div>
         
-        <div className="mt-6 p-3 bg-paper-2 border border-rule relative">
-          <div className="text-mono text-[9.5px] text-ink-3 uppercase tracking-widest flex items-center gap-2">
-            <span className="pulse-dot" /> Open for Opportunities
+        <div className="mt-6 p-4 bg-paper-2 border border-rule-soft border-l-[3px] border-l-accent relative">
+          <div className="flex items-center justify-between gap-3">
+            <div className="text-mono text-[9.5px] text-ink-3 uppercase tracking-widest flex items-center gap-2">
+              {de ? "Offen für neue Möglichkeiten" : "Open to opportunities"}
+            </div>
+            <span className="text-mono text-[8px] text-accent border border-rule-soft px-1.5 py-0.5">{de ? "VERFÜGBAR" : "AVAILABLE"}</span>
           </div>
-          <p className="text-[12.5px] text-ink-2 mt-2 leading-relaxed">{data.currently}</p>
+          <p className="text-[12.5px] text-ink-2 mt-3 leading-relaxed">
+            {de
+              ? "Ich interessiere mich für Positionen in KI, Full-Stack-, Mobile- und Desktop-Entwicklung."
+              : "Exploring roles in AI, full-stack, mobile, and desktop engineering."}
+          </p>
         </div>
       </div>
 
@@ -31,13 +40,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
       <section className="flex flex-col gap-4">
         <div className="flex items-center gap-2 border-b border-rule pb-1.5">
           <span className="text-mono text-[10px] text-ink-3">§ 01</span>
-          <h2 className="text-serif text-lg font-medium">Contact</h2>
+          <h2 className="text-serif text-lg font-medium">{de ? "Kontakt" : "Contact"}</h2>
         </div>
         <div className="flex flex-col">
           <ContactRow href={`https://github.com/${contact.github}`} label="GitHub" value={contact.github} />
           <ContactRow href={`mailto:${contact.email}`} label="Email" value={contact.email} />
           <ContactRow href={`https://www.linkedin.com/in/${contact.linkedin}/`} label="LinkedIn" value="snaehath-p" />
-          <ContactRow href={`https://${contact.portfolio}`} label="Web" value="portfolio" />
         </div>
       </section>
 
@@ -46,7 +54,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
         <div className="flex items-center justify-between border-b border-rule pb-1.5">
           <div className="flex items-center gap-2">
             <span className="text-mono text-[10px] text-ink-3">§ 02</span>
-            <h2 className="text-serif text-lg font-medium">Skills</h2>
+            <h2 className="text-serif text-lg font-medium">{de ? "Kenntnisse" : "Skills"}</h2>
           </div>
           {activeSkills.size > 0 && (
             <button onClick={clearSkills} className="text-mono text-[9px] text-accent hover:underline cursor-pointer">
@@ -87,15 +95,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
       <section className="flex flex-col gap-4">
         <div className="flex items-center gap-2 border-b border-rule pb-1.5">
           <span className="text-mono text-[10px] text-ink-3">§ 03</span>
-          <h2 className="text-serif text-lg font-medium">Education</h2>
+          <h2 className="text-serif text-lg font-medium">{de ? "Ausbildung" : "Education"}</h2>
         </div>
         {data.education.map((edu, idx) => (
           <div key={idx} className="flex flex-col">
             <div className="text-serif text-[15px] leading-snug">{edu.school}</div>
             <div className="text-[12px] text-ink-2 mt-0.5">{edu.degree}</div>
-            <div className="flex justify-between text-mono text-[10px] text-ink-3 mt-1.5">
-              <span>{edu.start} — {edu.end}</span>
-            </div>
           </div>
         ))}
       </section>
@@ -104,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ data, activeSkills, toggleSkil
       <section className="flex flex-col gap-4">
         <div className="flex items-center gap-2 border-b border-rule pb-1.5">
           <span className="text-mono text-[10px] text-ink-3">§ 04</span>
-          <h2 className="text-serif text-lg font-medium">Certs</h2>
+          <h2 className="text-serif text-lg font-medium">{de ? "Zertifikate" : "Certs"}</h2>
         </div>
         <ul className="flex flex-col">
           {data.certifications.map((cert, idx) => (
