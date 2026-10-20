@@ -37,7 +37,6 @@
   "Controller": "Einstellungen",
   "Environment": "Darstellung",
   "Typography": "Typografie",
-  "Density": "Dichte",
   "Layout mode": "Layoutmodus",
   "Localization": "Sprache",
   "Index search": "Index durchsuchen",
@@ -65,7 +64,5 @@
   "Ninja": "Ninja",
   "light": "Hell",
   "dark": "Dunkel",
-  "airy": "Luftig",
-  "compact": "Kompakt",
   "Index": "Index"
 }

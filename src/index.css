@@ -28,7 +28,6 @@
     --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --pairing: "Editorial";
-    --density: "airy";
     --texture: "on";
     
     /* Texture Intensity Tokens */
@@ -36,7 +35,6 @@
     --texture-brightness: 1.0;
     --texture-contrast: 1.0;
     
-    --density-gap: 3rem;
   }
 
   /* Themes */
@@ -52,12 +50,6 @@
     --highlight: #222222;
     --texture-opacity: 0.04;
     --texture-brightness: 0.8;
-  }
-
-  /* Density */
-  [data-density="compact"] {
-    --density-gap: 1.5rem;
-    font-size: 13.5px;
   }
 
   /* Type Pairings */

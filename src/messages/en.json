@@ -37,7 +37,6 @@
   "Controller": "Controller",
   "Environment": "Environment",
   "Typography": "Typography",
-  "Density": "Density",
   "Layout mode": "Layout mode",
   "Localization": "Localization",
   "Index search": "Index search",
@@ -65,7 +64,5 @@
   "Ninja": "Ninja",
   "light": "light",
   "dark": "dark",
-  "airy": "airy",
-  "compact": "compact",
   "Index": "Index"
 }

@@ -13,7 +13,6 @@ export const PortfolioContainer: React.FC = () => {
   // Tweak States
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [pairing, setPairing] = useState<"Editorial" | "Classical">("Editorial");
-  const [density, setDensity] = useState<"airy" | "compact">("airy");
   const [texture] = useState<"on" | "off">("on");
   const [isNinjaMode, setIsNinjaMode] = useState(false);
   const { locale, setLocale } = useLocale();
@@ -32,10 +31,9 @@ export const PortfolioContainer: React.FC = () => {
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-pairing", pairing);
-    root.setAttribute("data-density", density);
     root.setAttribute("data-texture", texture);
     root.lang = locale === "DE" ? "de" : "en";
-  }, [theme, pairing, density, texture, locale]);
+  }, [theme, pairing, texture, locale]);
 
   // Handle Mode Change with Shutter Effect
   const toggleNinja = (val: boolean) => {
@@ -279,15 +277,6 @@ export const PortfolioContainer: React.FC = () => {
                   <div className="tweak-opts">
                     {(["Editorial", "Classical"] as const).map(p => (
                       <button key={p} onClick={() => setPairing(p)} className={cn("tweak-opt", pairing === p && "on")}>{p}</button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="tweak-row">
-                  <span className="tweak-label">{t("Density")}</span>
-                  <div className="tweak-opts">
-                    {(["airy", "compact"] as const).map(option => (
-                      <button key={option} onClick={() => setDensity(option)} className={cn("tweak-opt", density === option && "on")}>{t(option)}</button>
                     ))}
                   </div>
                 </div>
