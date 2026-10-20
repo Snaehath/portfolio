@@ -4,6 +4,7 @@ import { MainColumn } from "@/components/MainColumn";
 import { RESUME_DATA, Project, PortfolioData } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "@/lib/i18n";
 import { Settings2, X, Command, Search } from "lucide-react";
 
 export const PortfolioContainer: React.FC = () => {
@@ -15,7 +16,8 @@ export const PortfolioContainer: React.FC = () => {
   const [density, setDensity] = useState<"airy" | "compact">("airy");
   const [texture] = useState<"on" | "off">("on");
   const [isNinjaMode, setIsNinjaMode] = useState(false);
-  const [locale, setLocale] = useState<"EN" | "DE">("EN");
+  const { locale, setLocale } = useLocale();
+  const t = useTranslations();
   
   const [showTweaks, setShowTweaks] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -118,10 +120,10 @@ export const PortfolioContainer: React.FC = () => {
 
             <div className="hidden sm:flex flex-col items-end gap-1.5 text-mono text-[10.5px] text-ink-3 uppercase tracking-widest">
               <div className="text-right">
-                {new Date().toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}
+                {new Date().toLocaleDateString(locale === "DE" ? "de-DE" : "en-US", { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}
               </div>
               <div className="text-[9px] text-accent flex items-center gap-2 border border-rule-soft px-2 py-0.5 rounded-sm bg-paper-2 shadow-sm">
-                <span className="opacity-70">SEARCH</span>
+                <span className="opacity-70">{t("Search")}</span>
                 <span className="font-bold">CTRL + K</span>
               </div>
             </div>
@@ -145,7 +147,6 @@ export const PortfolioContainer: React.FC = () => {
               >
                 <Sidebar 
                   data={RESUME_DATA} 
-                  locale={locale}
                   activeSkills={activeSkills} 
                   toggleSkill={toggleSkill} 
                   clearSkills={clearSkills} 
@@ -157,7 +158,6 @@ export const PortfolioContainer: React.FC = () => {
           <div className={cn("transition-all duration-300", !isNinjaMode ? "sm:pl-12" : "sm:pl-0 sm:col-span-2")}>
             <MainColumn 
               data={RESUME_DATA} 
-              locale={locale}
               activeSkills={activeSkills}
               onPeek={onPeek}
               onPeekEnd={onPeekEnd}
@@ -170,7 +170,7 @@ export const PortfolioContainer: React.FC = () => {
         <footer className="mt-20 pt-6 border-t-2 border-rule grid grid-cols-1 sm:grid-cols-3 items-center gap-6 text-mono text-[10.5px] text-ink-3">
           <div className="text-center sm:text-left">© {new Date().getFullYear()} SNAEHATH P</div>
           <div className="text-serif italic text-sm text-center text-ink-2 lowercase">
-            architecting excellence through code and design
+            {t("Architecting excellence through code and design")}
           </div>
           <div className="text-center sm:text-right uppercase tracking-widest">React / TypeScript / Vite / Editorial</div>
         </footer>
@@ -211,14 +211,14 @@ export const PortfolioContainer: React.FC = () => {
                <div className="flex justify-between items-start border-b-2 border-rule p-8 pb-4">
                   <div>
                     <span className="text-mono text-[10px] text-accent uppercase tracking-widest mb-2 block">§ 06-A</span>
-                    <h2 className="text-serif text-4xl">More projects</h2>
+                    <h2 className="text-serif text-4xl">{t("More projects")}</h2>
                   </div>
                   <button onClick={() => setShowAllProjects(false)} className="text-ink hover:text-accent transition-colors">
                     <X size={28} />
                   </button>
                </div>
                
-               <ProjectsModalContent data={RESUME_DATA} locale={locale} />
+               <ProjectsModalContent data={RESUME_DATA} />
             </motion.div>
           </div>
         )}
@@ -254,28 +254,28 @@ export const PortfolioContainer: React.FC = () => {
               className="glass w-[min(340px,calc(100vw-2rem))] max-h-[calc(100dvh-6rem)] shadow-[12px_12px_0_var(--rule)] overflow-y-auto flex flex-col border-2 border-rule"
             >
               <div className="flex justify-between items-center bg-paper-2 border-b-2 border-rule px-4 py-3">
-                <span className="text-mono text-[10px] font-bold tracking-[0.3em] uppercase">Controller</span>
-                <button aria-label="Close controller" onClick={() => setShowTweaks(false)} className="hover:text-accent transition-colors"><X size={16} /></button>
+                <span className="text-mono text-[10px] font-bold tracking-[0.3em] uppercase">{t("Controller")}</span>
+                <button aria-label={t("Close controller")} onClick={() => setShowTweaks(false)} className="hover:text-accent transition-colors"><X size={16} /></button>
               </div>
               
               <div className="p-6 flex flex-col gap-6 bg-paper/80 backdrop-blur-md">
                 <div className="tweak-row">
-                  <span className="tweak-label">ENVIRONMENT</span>
+                  <span className="tweak-label">{t("Environment")}</span>
                   <div className="tweak-opts">
-                    {(["light", "dark"] as const).map(t => (
-                      <button key={t} onClick={() => {
+                    {(["light", "dark"] as const).map(option => (
+                      <button key={option} onClick={() => {
                         setIsTransitioning(true);
                         setTimeout(() => {
-                          setTheme(t);
+                          setTheme(option);
                           setTimeout(() => setIsTransitioning(false), 300);
                         }, 400);
-                      }} className={cn("tweak-opt", theme === t && "on")}>{t}</button>
+                      }} className={cn("tweak-opt", theme === option && "on")}>{t(option)}</button>
                     ))}
                   </div>
                 </div>
 
                 <div className="tweak-row">
-                  <span className="tweak-label">TYPOGRAPHY</span>
+                  <span className="tweak-label">{t("Typography")}</span>
                   <div className="tweak-opts">
                     {(["Editorial", "Classical"] as const).map(p => (
                       <button key={p} onClick={() => setPairing(p)} className={cn("tweak-opt", pairing === p && "on")}>{p}</button>
@@ -284,24 +284,24 @@ export const PortfolioContainer: React.FC = () => {
                 </div>
 
                 <div className="tweak-row">
-                  <span className="tweak-label">DENSITY</span>
+                  <span className="tweak-label">{t("Density")}</span>
                   <div className="tweak-opts">
-                    {(["airy", "compact"] as const).map(d => (
-                      <button key={d} onClick={() => setDensity(d)} className={cn("tweak-opt", density === d && "on")}>{d}</button>
+                    {(["airy", "compact"] as const).map(option => (
+                      <button key={option} onClick={() => setDensity(option)} className={cn("tweak-opt", density === option && "on")}>{t(option)}</button>
                     ))}
                   </div>
                 </div>
 
                 <div className="tweak-row">
-                  <span className="tweak-label">LAYOUT MODE</span>
+                  <span className="tweak-label">{t("Layout mode")}</span>
                   <div className="tweak-opts">
-                    <button onClick={() => toggleNinja(false)} className={cn("tweak-opt", !isNinjaMode && "on")}>Full</button>
-                    <button onClick={() => toggleNinja(true)} className={cn("tweak-opt", isNinjaMode && "on")}>Ninja</button>
+                    <button onClick={() => toggleNinja(false)} className={cn("tweak-opt", !isNinjaMode && "on")}>{t("Full")}</button>
+                    <button onClick={() => toggleNinja(true)} className={cn("tweak-opt", isNinjaMode && "on")}>{t("Ninja")}</button>
                   </div>
                 </div>
 
                 <div className="tweak-row">
-                  <span className="tweak-label">{locale === "DE" ? "SPRACHE" : "LOCALIZATION"}</span>
+                  <span className="tweak-label">{t("Localization")}</span>
                   <div className="tweak-opts">
                     {(["EN", "DE"] as const).map(language => (
                       <button key={language} aria-pressed={locale === language} onClick={() => setLocale(language)} className={cn("tweak-opt", locale === language && "on")}>{language}</button>
@@ -312,13 +312,13 @@ export const PortfolioContainer: React.FC = () => {
                 <div className="pt-4 border-t border-rule-soft mt-2">
                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-mono text-[9.5px] text-ink-3">
                       <button onClick={() => { setShowTweaks(false); setShowSearch(true); }} className="hover:text-accent flex items-center gap-1.5 transition-colors">
-                        <Command size={11} />K · INDEX SEARCH
+                        <Command size={11} />K · {t("Index search")}
                       </button>
                       <button onClick={() => window.open('resume.pdf', '_blank')} className="hover:text-accent flex items-center gap-1.5 transition-colors">
-                        <Command size={11} />P · VIEW/PRINT PDF
+                        <Command size={11} />P · {t("View/Print PDF")}
                       </button>
                       <a href="resume.pdf" download="Snaehath_Resume.pdf" className="hover:text-accent flex items-center gap-1.5 transition-colors">
-                        <Command size={11} />D · DOWNLOAD PDF
+                        <Command size={11} />D · {t("Download PDF")}
                       </a>
                    </div>
                 </div>
@@ -341,19 +341,20 @@ export const PortfolioContainer: React.FC = () => {
   );
 };
 
-const ProjectsModalContent: React.FC<{ data: PortfolioData; locale: "EN" | "DE" }> = ({ data, locale }) => {
+const ProjectsModalContent: React.FC<{ data: PortfolioData }> = ({ data }) => {
   const [q, setQ] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All tools");
+  const [activeFilter, setActiveFilter] = useState("__all__");
+  const t = useTranslations();
 
   const allTools = useMemo(() => {
     const tools = new Set<string>();
     data.projects.forEach(p => p.stack.forEach(s => tools.add(s)));
-    return ["All tools", ...Array.from(tools).sort()];
+    return ["__all__", ...Array.from(tools).sort()];
   }, [data]);
 
   const filtered = data.projects.filter(p => {
     const matchesQ = (p.name + p.summary).toLowerCase().includes(q.toLowerCase());
-    const matchesFilter = activeFilter === "All tools" || p.stack.includes(activeFilter);
+    const matchesFilter = activeFilter === "__all__" || p.stack.includes(activeFilter);
     return matchesQ && matchesFilter;
   });
 
@@ -365,22 +366,22 @@ const ProjectsModalContent: React.FC<{ data: PortfolioData; locale: "EN" | "DE" 
           <input 
             value={q}
             onChange={e => setQ(e.target.value)}
-            placeholder={locale === "DE" ? "Projekte suchen …" : "Search projects..."}
+            placeholder={t("Search projects...")}
             className="flex-1 bg-transparent outline-none text-serif text-xl italic"
           />
         </div>
         
         <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
-          {allTools.map(t => (
+          {allTools.map(tool => (
             <button 
-              key={t} 
-              onClick={() => setActiveFilter(t)}
+              key={tool} 
+              onClick={() => setActiveFilter(tool)}
               className={cn(
                 "px-3 py-1 text-mono text-[9px] uppercase tracking-wider border transition-all whitespace-nowrap",
-                activeFilter === t ? "bg-accent text-paper border-accent" : "border-rule-soft text-ink-3 hover:border-ink"
+                activeFilter === tool ? "bg-accent text-paper border-accent" : "border-rule-soft text-ink-3 hover:border-ink"
               )}
             >
-              {t}
+              {tool === "__all__" ? t("All tools") : tool}
             </button>
           ))}
         </div>
@@ -406,7 +407,7 @@ const ProjectsModalContent: React.FC<{ data: PortfolioData; locale: "EN" | "DE" 
         ))}
         {filtered.length === 0 && (
           <div className="col-span-2 py-20 text-center text-mono text-xs text-ink-3 uppercase tracking-widest opacity-40">
-            No technical matches found
+            {t("No technical matches found")}
           </div>
         )}
       </div>
@@ -415,29 +416,30 @@ const ProjectsModalContent: React.FC<{ data: PortfolioData; locale: "EN" | "DE" 
 };
 
 const CmdK: React.FC<{ data: PortfolioData; theme: "light" | "dark"; onJump: (id: string) => void; onClose: () => void; toggleTheme: (t: "light" | "dark") => void }> = ({ data, theme, onJump, onClose, toggleTheme }) => {
+  const t = useTranslations();
   const [q, setQ] = useState("");
   const [idx, setIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const items = useMemo(() => {
     return [
-      { tag: "Section", label: "Experience", act: () => onJump("experience") },
-      { tag: "Section", label: "Projects", act: () => onJump("projects") },
-      { tag: "Section", label: "Achievements", act: () => onJump("achievements") },
-      { tag: "Action", label: "View / Print PDF", meta: "⌘P", act: () => window.open('resume.pdf', '_blank') },
-      { tag: "Action", label: "Download Resume", meta: "⌘D", act: () => {
+      { tag: t("Section"), label: t("Experience"), act: () => onJump("experience") },
+      { tag: t("Section"), label: t("Projects"), act: () => onJump("projects") },
+      { tag: t("Section"), label: t("Achievements"), act: () => onJump("achievements") },
+      { tag: t("Action"), label: t("View/Print PDF"), meta: "⌘P", act: () => window.open('resume.pdf', '_blank') },
+      { tag: t("Action"), label: t("Download Resume"), meta: "⌘D", act: () => {
          const link = document.createElement('a');
          link.href = 'resume.pdf';
          link.download = 'Snaehath_Resume.pdf';
          link.click();
       }},
-      { tag: "Action", label: "Toggle Theme", meta: "Theme", act: () => {
+      { tag: t("Action"), label: t("Toggle Theme"), meta: t("Theme"), act: () => {
          toggleTheme(theme === "dark" ? "light" : "dark");
       }},
-      { tag: "Contact", label: "Email Snaehath", meta: data.contact.email, act: () => window.location.href = `mailto:${data.contact.email}` },
-      { tag: "Contact", label: "Open GitHub", meta: "@" + data.contact.github, act: () => window.open(`https://github.com/${data.contact.github}`, "_blank") },
+      { tag: t("Contact"), label: t("Email Snaehath"), meta: data.contact.email, act: () => window.location.href = `mailto:${data.contact.email}` },
+      { tag: t("Contact"), label: t("Open GitHub"), meta: "@" + data.contact.github, act: () => window.open(`https://github.com/${data.contact.github}`, "_blank") },
     ];
-  }, [data, theme, onJump, toggleTheme]);
+  }, [data, theme, onJump, toggleTheme, t]);
 
   const filtered = q
     ? items.filter(i => (i.label + " " + i.tag + " " + (i.meta || "")).toLowerCase().includes(q.toLowerCase()))
@@ -480,12 +482,12 @@ const CmdK: React.FC<{ data: PortfolioData; theme: "light" | "dark"; onJump: (id
                setQ(e.target.value);
                setIdx(0);
              }} 
-             placeholder="Search folio index…" 
+             placeholder={t("Search folio index…")} 
              className="flex-1 py-4 bg-transparent outline-none text-serif text-lg"
            />
         </div>
         <div className="max-h-[400px] overflow-y-auto">
-          {filtered.length === 0 && <div className="py-8 text-center text-ink-3 text-mono text-xs">NO RESULTS FOUND</div>}
+          {filtered.length === 0 && <div className="py-8 text-center text-ink-3 text-mono text-xs">{t("No results found").toUpperCase()}</div>}
           {filtered.map((it, i) => (
             <div
               key={i}
@@ -508,7 +510,7 @@ const CmdK: React.FC<{ data: PortfolioData; theme: "light" | "dark"; onJump: (id
           ))}
         </div>
         <div className="cmdk-hint border-t-2 border-rule">
-          <span>↑↓ NAVIGATE · ↵ SELECT · ESC CLOSE</span>
+          <span>{t("Navigate · ↵ Select · Esc Close").toUpperCase()}</span>
           <span className="tracking-widest">INDEX</span>
         </div>
       </div>
