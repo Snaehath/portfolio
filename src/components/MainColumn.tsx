@@ -76,8 +76,8 @@ export const MainColumn: React.FC<MainColumnProps> = ({ data, locale, activeSkil
           <div className="lg:border-l lg:border-rule-soft lg:pl-7">
             <p className="text-[14px] sm:text-[15px] text-ink-2 leading-relaxed max-w-xl">
               {de
-                ? "Ich entwickle KI-Produkte, Entwicklerwerkzeuge und Apps mit Blick auf das ganze System – vom Modell und Backend bis zur sorgfältig gestalteten Oberfläche."
-                : "I build AI products, developer tools, and apps with an eye for the whole system—from the model and backend to a carefully crafted interface."}
+                ? "Ich entwickle KI-Produkte, Entwicklerwerkzeuge und Apps mit Blick auf das ganze System  vom Modell und Backend bis zur sorgfältig gestalteten Oberfläche."
+                : "I build AI products, developer tools, and apps with an eye for the whole system from the model and backend to a carefully crafted interface."}
             </p>
             <div className="flex flex-wrap gap-2 mt-5" aria-label={de ? "Schwerpunkte" : "Areas of focus"}>
               {(de ? ["Modell-Entwicklung", "Retrieval", "Produktentwicklung"] : ["Model building", "Retrieval", "Product engineering"]).map(item => (
